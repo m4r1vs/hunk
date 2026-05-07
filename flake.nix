@@ -14,6 +14,7 @@
     ];
   };
   outputs = {
+    self,
     nixpkgs,
     bun2nix,
     ...
@@ -47,5 +48,13 @@
       in
         pkgs.callPackage ./nix/devShell.nix {}
     );
+
+    homeManagerModules = {
+      hunk = import ./nix/home-manager.nix;
+      default = {pkgs, ...}: {
+        imports = [self.homeManagerModules.hunk];
+        programs.hunk.package = lib.mkDefault self.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      };
+    };
   };
 }
