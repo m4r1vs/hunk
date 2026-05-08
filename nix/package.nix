@@ -35,4 +35,12 @@ in
     dontFixup = true;
     dontStrip = true;
     dontRunLifecycleScripts = true;
+
+    meta = with lib; {
+      description = "Terminal diff viewer for agentic changesets";
+      homepage = "https://github.com/modem-dev/hunk";
+      license = licenses.mit;
+      mainProgram = "hunk";
+      platforms = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+    };
   }
