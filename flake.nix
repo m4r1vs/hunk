@@ -46,7 +46,9 @@
           inherit system;
         };
       in
-        pkgs.callPackage ./nix/devShell.nix {}
+        pkgs.callPackage ./nix/devShell.nix {
+          bun2nix = bun2nix.packages.${system}.default;
+        }
     );
 
     homeManagerModules = {
