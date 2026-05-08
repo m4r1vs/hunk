@@ -45,10 +45,11 @@
         pkgs = import nixpkgs {
           inherit system;
         };
-      in
-        pkgs.callPackage ./nix/devShell.nix {
+      in {
+        default = pkgs.callPackage ./nix/devShell.nix {
           bun2nix = bun2nix.packages.${system}.default;
-        }
+        };
+      }
     );
 
     homeManagerModules = {
