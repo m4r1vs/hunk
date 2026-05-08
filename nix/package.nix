@@ -28,6 +28,7 @@ in
       runHook preInstall
       mkdir -p $out/bin
       cp -p ./hunk-bin $out/bin/hunk
+      cp -r ./skills $out/
       runHook postInstall
     '';
 
