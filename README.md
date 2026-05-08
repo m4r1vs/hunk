@@ -120,6 +120,7 @@ exclude_untracked = false
 line_numbers = true
 wrap_lines = false
 agent_notes = false
+transparent_bg = false # use terminal background instead of theme backgrounds
 ```
 
 `exclude_untracked` affects working-tree `hunk diff` sessions only.
