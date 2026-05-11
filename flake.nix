@@ -46,9 +46,7 @@
           inherit system;
         };
       in {
-        default = pkgs.callPackage ./nix/devShell.nix {
-          bun2nix = bun2nix.packages.${system}.default;
-        };
+        default = pkgs.callPackage ./nix/devShell.nix {};
       }
     );
 

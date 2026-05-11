@@ -1,11 +1,7 @@
-{
-  pkgs,
-  bun2nix,
-}:
+{pkgs}:
 pkgs.mkShell {
   buildInputs = with pkgs; [
     bun
-    bun2nix
     git
     nodejs
   ];
