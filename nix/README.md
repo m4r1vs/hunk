@@ -2,6 +2,8 @@
 
 Nix users can install Hunk from source instead of using npm.
 
+## Install from a flake
+
 1. Add Hunk to your nix flake inputs like such:
 
 ```nix
@@ -49,7 +51,23 @@ Hunk provides a Home Manager module to manage both the package and its configura
 }
 ```
 
+## Updating Hunk
+
+Flake users update Hunk by updating their own pinned `flake.lock` input:
+
+```bash
+nix flake lock --update-input hunk
+```
+
 ## Building using Nix
 
 Simply run `nix build .#packages.{YOUR_SYSTEM}.default` where YOUR_SYSTEM is one of `x86_64-linux`, `x86_64-darwin`, `aarch64-linux` or `aarch64-darwin`. The resulting
 Hunk binary will be `./result/bin/hunk`.
+
+## Maintainer dependency updates
+
+When JavaScript or Bun dependencies change, regenerate the Nix dependency lockfile and commit it with the dependency change:
+
+```bash
+bun run nix:update-lock
+```
