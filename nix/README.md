@@ -17,13 +17,23 @@ Nix users can install Hunk from source instead of using npm.
 }
 ```
 
-2. Use in NixOS `environment.systemPackages` or `home.packages`:
+2. Use in NixOS `environment.systemPackages`:
 
 ```nix
 {
-    packages = [
-        inputs.hunk.packages.${pkgs.stdenv.hostPlatform.system}.default
-    ]
+  environment.systemPackages = [
+    inputs.hunk.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
+}
+```
+
+Or in Home Manager `home.packages`:
+
+```nix
+{
+  home.packages = [
+    inputs.hunk.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
 }
 ```
 
@@ -50,6 +60,8 @@ Hunk provides a Home Manager module to manage both the package and its configura
   };
 }
 ```
+
+`enableGitIntegration` writes to Home Manager's Git configuration, so it requires Home Manager's Git module to be enabled with `programs.git.enable = true;`.
 
 ## Updating Hunk
 
